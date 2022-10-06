@@ -42,7 +42,7 @@ public class UserController {
         return "redirect:/user/create"; // advantage: no need to retype previous model.attribute
     }
 
-    @GetMapping("/update{username}")
+    @GetMapping("/update/{username}")
     public String editUser(@PathVariable("username") String username, Model model) {
 
         model.addAttribute("user", userService.findById(username));
@@ -53,7 +53,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(UserDTO user) {
+    public String updateUser(@ModelAttribute("user") UserDTO user) {
 
         userService.update(user);
 
@@ -67,4 +67,15 @@ public class UserController {
 
         return "redirect:/user/create";
     }
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -4,12 +4,12 @@ public enum Status {
 
     OPEN("Open"), IN_PROGRESS("In Progress"), COMPLETE("Complete");
 
-    private String value;
-
-    Status(String status) {
-    }
+    private final String value;
 
     public String getValue() {
         return value;
+    }
+    Status(String value){
+        this.value=value;
     }
 }

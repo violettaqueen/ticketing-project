@@ -18,10 +18,10 @@ public class ProjectDTO {
 
     private UserDTO assignedManager;
 
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate projectStartDate;
 
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate projectEndDate;
 
     private String projectDetail;

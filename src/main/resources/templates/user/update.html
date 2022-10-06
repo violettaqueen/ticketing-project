@@ -32,7 +32,7 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form th:action="@{/user/update}" method="post" th:object="${user}" >
+                                    <form th:action="@{/user/create}" method="post" th:object="${user}" >
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
@@ -52,8 +52,8 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="emaiуladdress" class="col-form-label">Email Address</label>
-                                                    <input id="emaiуladdress" type="text" placeholder="email address" th:field="*{userName}" class="form-control">>
+                                                    <label for="emailaddress" class="col-form-label">Email Address</label>
+                                                    <input id="emailaddress" type="text" placeholder="email address" th:field="*{userName}" class="form-control">>
                                                 </div>
                                             </div>
 
@@ -157,9 +157,9 @@
                                             <tr th:each="user : ${users}">
                                                 <td th:text="${user.firstName +' '+ user.lastName}"></td>
                                                 <td th:text="${user.userName}"></td>
-                                                <td th:text="${user.gender}"></td>
+                                                <td th:text="${user.gender.value}"></td>
                                                 <td th:text="${user.phone}"></td>
-                                                <td th:text="${user.role.getDescription()}"></td>
+                                                <td th:text="${user.role.description}"></td>
                                                 <td class="actions">
                                                     <a href="#"><button type="button" class="btn btn-warning btn-sm">Update</button></a>
                                                     <a href="#" class="delete-row"><button type="button" class="btn btn-secondary btn-sm">Delete</button></a>
