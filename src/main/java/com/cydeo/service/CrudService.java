@@ -10,6 +10,6 @@ public interface CrudService<T,ID> {
     T findById(ID username);
     List<T> findAll();
     void deleteById(ID username);
-    void update(T user);
+    void update(T object);
 
 }

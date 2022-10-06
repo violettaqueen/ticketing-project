@@ -32,12 +32,13 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form th:action="@{/project/create}" method="post" th:object="${project}">
+                                    <form th:action="@{/project/update}" method="post" th:object="${project}">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectname" class="col-form-label">Project Name</label>
-                                                    <input id="projectname" type="text" th:field="*{projectName}" class="form-control" placeholder="project name">
+                                                    <input id="projectname" type="text" th:field="*{projectName}"
+                                                           class="form-control" placeholder="project name">
                                                 </div>
                                             </div>
                                         </div>
@@ -45,7 +46,8 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectcode" class="col-form-label">Project Code</label>
-                                                    <input id="projectcode" type="text" th:field="*{projectCode}" class="form-control" placeholder="project code">
+                                                    <input id="projectcode" type="text" th:field="*{projectCode}"
+                                                           readonly class="form-control" placeholder="project code">
                                                 </div>
                                             </div>
                                         </div>
@@ -53,10 +55,12 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>Assigned Manager</label>
-                                                    <select name="assignedmanager" th:field="*{assignedManager}" class="custom-select">
+                                                    <select name="assignedmanager" th:field="*{assignedManager}"
+                                                            class="custom-select">
                                                         <option th:value="' '" th:text="Select"></option>
-                                                        <option th:each="manager : ${managers}" th:value="${manager.userName}" th:text="${manager.firstName +' '+
-                                                        manager.lastName}"></option>
+                                                        <option th:each="manager : ${managers}"
+                                                                th:value="${manager.userName}" th:text="${manager.firstName +' '+
+                                                    manager.lastName}"></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -65,13 +69,15 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="startdate">Project Start Date</label>
-                                                    <input id="startdate" type="date" th:field="*{projectStartDate}" class="form-control">
+                                                    <input id="startdate" type="date" th:field="*{projectStartDate}"
+                                                           class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="enddate">Project End Date</label>
-                                                    <input id="enddate" type="date" th:field="*{projectEndDate}" class="form-control">
+                                                    <input id="enddate" type="date" th:field="*{projectEndDate}"
+                                                           class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -79,14 +85,17 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectdetail">Project Detail</label>
-                                                    <textarea id="projectdetail" th:field="*{projectDetail}" class="form-control" placeholder="project detail"></textarea>
+                                                    <textarea id="projectdetail" th:field="*{projectDetail}"
+                                                              class="form-control"
+                                                              placeholder="project detail"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <div class="float-right">
-                                                    <button class="btn btn-success rounded-0" type="submit">Save</button>
+                                                    <button class="btn btn-success rounded-0" type="submit">Save
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,7 +111,6 @@
                     </div>
 
                 </div>
-
 
 
                 <!-- ------------------------TABLE START----------------------------- -->
@@ -135,9 +143,18 @@
                                                 <td th:text="${project.assignedManager.firstName + ' ' + project.assignedManager.lastName}"></td>
                                                 <td th:text="${project.projectStatus.value}"></td>
                                                 <td>
-                                                    <a th:href="@{/project/update/{id}(id=${project.getProjectCode()})}"><button type="button" class="btn btn-warning rounded-0">Update</button></a>
-                                                    <a th:href="@{/project/delete/{id}(id=${project.getProjectCode()})}"><button type="button" class="btn btn-danger rounded-0">Delete</button></a>
-                                                    <a th:href="@{/project/complete/{id}(id=${project.getProjectCode()})}"><button type="button" class="btn btn-info rounded-0">Complete</button></a>
+                                                    <a th:href="@{/project/update/{id}(id=${project.getProjectCode()})}">
+                                                        <button type="button" class="btn btn-warning rounded-0">Update
+                                                        </button>
+                                                    </a>
+                                                    <a th:href="@{/project/delete/{id}(id=${project.getProjectCode()})}">
+                                                        <button type="button" class="btn btn-danger rounded-0">Delete
+                                                        </button>
+                                                    </a>
+                                                    <a th:href="@{/project/complete/{id}(id=${project.getProjectCode()})}">
+                                                        <button type="button" class="btn btn-info rounded-0">Complete
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             </tbody>
