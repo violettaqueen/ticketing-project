@@ -52,13 +52,14 @@ public class ProjectController {
 
         return "redirect:/project/create";
     }
-    @GetMapping("/update/{projectCode}")
+    @GetMapping("/update/{projectCode}")  //populate the form method
     public String editProject(@PathVariable("projectCode") String projectCode, Model model) {
 
         model.addAttribute("project", projectService.findById(projectCode));
+        model.addAttribute("managers", userService.findManagers());
         model.addAttribute("projects", projectService.findAll());
 
-        return "/user/update";
+        return "/project/update";
     }
 
     @PostMapping("/update")
