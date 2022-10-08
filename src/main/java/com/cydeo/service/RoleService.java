@@ -1,11 +1,13 @@
 package com.cydeo.service;
 
+import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.RoleDTO;
 import com.cydeo.dto.UserDTO;
 
 import java.util.List;
 
 public interface RoleService extends CrudService<RoleDTO, Long> {
+
 
     //service works with DTO
 // delete these methods and extend CrudServices and pass parameters
