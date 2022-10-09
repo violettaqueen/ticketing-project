@@ -16,14 +16,14 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO, Long> implement
     @Override
     public TaskDTO save(TaskDTO task) {
 
-        if(task.getId()==null){
+        if (task.getId() == null) {
             task.setId(UUID.randomUUID().getMostSignificantBits());
         }
 
-        if (task.getTaskStatus()==null){
+        if (task.getTaskStatus() == null) {
             task.setTaskStatus(Status.OPEN);
         }
-        if (task.getAssignedDate()==null){
+        if (task.getAssignedDate() == null) {
             task.setAssignedDate(LocalDate.now());
         }
         return super.save(task.getId(), task);
@@ -42,10 +42,10 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO, Long> implement
     @Override
     public void update(TaskDTO task) {
 
-       TaskDTO foundTask = findById(task.getId());
+        TaskDTO foundTask = findById(task.getId());
 
-       task.setTaskStatus(foundTask.getTaskStatus());
-       task.setAssignedDate(foundTask.getAssignedDate());
+        task.setTaskStatus(foundTask.getTaskStatus());
+        task.setAssignedDate(foundTask.getAssignedDate());
 
         super.update(task, task.getId());
     }
@@ -59,10 +59,10 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO, Long> implement
     @Override
     public List<TaskDTO> findTasksByManager(UserDTO manager) {
 
-        return  findAll()
-                        .stream()
-                        .filter(task -> task.getProject().getAssignedManager().equals(manager))
-                        .collect(Collectors.toList());
+        return findAll()
+                .stream()
+                .filter(task -> task.getProject().getAssignedManager().equals(manager))
+                .collect(Collectors.toList());
 
     }
 
@@ -71,6 +71,19 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO, Long> implement
         return findAll().stream()
                 .filter(task -> !task.getTaskStatus().equals(status))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TaskDTO> findAllTasksByStatus(Status status) {
+        return findAll().stream()
+                .filter(task -> task.getTaskStatus().equals(Status.COMPLETE))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateStatus(TaskDTO task) {
+        findById(task.getId()).setTaskStatus(task.getTaskStatus());  //first, status is updated
+        update(task);  //second, task is updated with the new status info
     }
 
 
